@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzau.InsertToMysql.mappers.TissueMapper">
+    <insert id="insertToTissue_Cultivar">
+        insert into biology.t_tissue_cultivar (TISSUE_ID, CULTIVAR_ID)
+        values (#{TISSUE_ID}, #{CULTIVAR_ID});
+    </insert>
+    <select id="selectByTissueName" resultType="com.hzau.InsertToMysql.domain.Tissue">
+        select *
+        from biology.t_tissue
+        where TISSUE_NAME = #{TissueName};
+    </select>
+</mapper>

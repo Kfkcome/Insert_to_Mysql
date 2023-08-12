@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <environments default="development">
+        <environment id="development">
+            <!--配置事务的管理方式-->
+            <transactionManager type="JDBC"/>
+            <!--            <dataSource type="com.hzau.InsertToMysql.config.DruidDataSourceFactory">-->
+            <!--                <property name="driverClass" value="${db.driver}"/>-->
+            <!--                <property name="jdbcUrl" value="${db.url}"/>-->
+            <!--                <property name="username" value="${db.user}"/>-->
+            <!--                <property name="password" value="${db.password}"/>-->
+            <!--            </dataSource>-->
+            <dataSource type="POOLED">
+                <!--                JDBC 驱动-->
+                <property name="driver" value="${db.driver}"/>
+                <!--                url数据库的 JDBC URL地址。-->
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.user}"/>
+                <property name="password" value="${db.password}"/>
+
+                <!--            defaultTransactionIsolationLevel – 默认的连接事务隔离级别。&ndash;&gt;-->
+                <!--            <property name="defaultTransactionIsolationLevel" value=""/>-->
+
+                <!--            defaultNetworkTimeout – 等待数据库操作完成的默认网络超时时间（单位：毫秒）&ndash;&gt;-->
+                <!--            <property name="efaultNetworkTimeout" value=""/>-->
+
+            </dataSource>
+
+        </environment>
+    </environments>
+    <!--<mappers>
+        <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+    </mappers>-->
+    <!-- 将包内的映射器接口实现全部注册为映射器 --><!-- 将包内的映射器接口实现全部注册为映射器 -->
+    <mappers>
+        <package name="com.hzau.InsertToMysql.mappers"/>
+    </mappers>
+</configuration>
+
