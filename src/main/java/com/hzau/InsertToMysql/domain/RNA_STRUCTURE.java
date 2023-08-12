@@ -4,6 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * rna结构
+ * 与Gff图相关
+ *
+ * @author kfk
+ * @date 2023/08/12
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

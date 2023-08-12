@@ -4,6 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Compartment点
+ * 单位是MB
+ *
+ * @author kfk
+ * @date 2023/08/12
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

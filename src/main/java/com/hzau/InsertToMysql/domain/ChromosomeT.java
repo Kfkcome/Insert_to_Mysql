@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 /**
  * chromosome 染色体
  * 防止与java-straw中的Chromosome重名
+ * 取名为 ChromosomeT
  *
  * @author kfk
  * @date 2023/07/09

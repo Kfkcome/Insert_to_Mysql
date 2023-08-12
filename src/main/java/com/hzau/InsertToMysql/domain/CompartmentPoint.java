@@ -4,6 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Compartment点的实体类
+ *
+ * @author kfk
+ * @date 2023/08/12
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
