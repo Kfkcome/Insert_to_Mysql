@@ -22,5 +22,5 @@ public class RNA {
     long START_POINT;
     long END_POINT;
     int DIRECTION;//方向
-    int TISSUE_ID;
+    //int TISSUE_ID;
 }

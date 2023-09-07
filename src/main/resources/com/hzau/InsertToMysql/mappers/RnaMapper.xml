@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hzau.InsertToMysql.mappers.RnaMapper">
     <insert id="insertRnaFromFile">
-        insert into biology.t_rna(CS_ID, mRNA_ID, mRNA_NAME, START_POINT, END_POINT, DIRECTION,TISSUE_ID)
+        insert into biology.t_rna(CS_ID, mRNA_ID, mRNA_NAME, START_POINT, END_POINT, DIRECTION)
         values
         <foreach collection="list" separator="," item="item">
-            (#{item.CS_ID},#{item.mRNA_ID},#{item.mRNA_NAME},#{item.START_POINT},#{item.END_POINT},#{item.DIRECTION},#{item.TISSUE_ID})
+            (#{item.CS_ID},#{item.mRNA_ID},#{item.mRNA_NAME},#{item.START_POINT},#{item.END_POINT},#{item.DIRECTION})
         </foreach>
     </insert>
     <insert id="insertRna_StructureFromFile">
-        insert into biology.t_rna_structure
+        insert into biology.t_rna_structure(mRNA_ID, EXON_ID, START_POINT, END_POINT)
         values
         <foreach collection="list" separator="," item="item">
             (#{item.mRNA_ID},#{item.EXON_ID},#{item.START_POINT},#{item.END_POINT})

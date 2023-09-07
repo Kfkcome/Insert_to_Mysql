@@ -44,7 +44,7 @@ public class RnaService {
         System.out.println("进入了方法");
         int CultivarID;//品种id
         int SpeciesID;//物种id
-        int TISSUE_ID;//组织id
+        // int TISSUE_ID;//组织id
         Map<String, Integer> saveExonNum = new HashMap<>();
         Map<String, Integer> saveRnaId = new HashMap<>();//因为一个品种中的名称唯一所以可以用来存id，避免查询花费大量时间
         ArrayList<RNA> rnaArrayList = new ArrayList<>();
@@ -57,9 +57,9 @@ public class RnaService {
             SpeciesID = speciesMapper.findByName(split1[0]);
             System.out.println(SpeciesID);
             CultivarID = cultivarMapper.findByName_SpeciesID(new Cultivar(split1[1], SpeciesID));
-            System.out.println(CultivarID);
-            TISSUE_ID = tissueMapper.selectByTissueName(split1[2]).getTISSUE_ID();
-            System.out.println(TISSUE_ID);
+            System.out.println("品种id" + CultivarID);
+            //TISSUE_ID = tissueMapper.selectByTissueName(split1[2]).getTISSUE_ID();
+            //System.out.println(TISSUE_ID);
         } catch (NullPointerException e) {
             System.out.println("文件出错，查询出错");
             sqlSession.close();
@@ -86,7 +86,7 @@ public class RnaService {
                 if (split[2].equals("mRNA")) {
                     String mRNAName = split[8].split("=")[1].split(";")[0];
                     int direction = checkDirection(split[6]);
-                    RNA rna = new RNA(CS_ID, max_id, mRNAName, START_POINT, END_POINT, direction, TISSUE_ID);
+                    RNA rna = new RNA(CS_ID, max_id, mRNAName, START_POINT, END_POINT, direction);
                     rnaArrayList.add(rna);
                     saveExonNum.put(mRNAName, 0);
                     saveRnaId.put(mRNAName, max_id);
@@ -125,7 +125,9 @@ public class RnaService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        i += rnaMapper.insertRna_StructureFromFile(rnaStructures);
+        if (rnaStructures.size() >= 1)
+            i += rnaMapper.insertRna_StructureFromFile(rnaStructures);
+        else System.out.println("该文件没有exon选项");
         sqlSession.commit();
         sqlSession.close();
         return i;
